@@ -301,3 +301,26 @@ def get_agent_by_name(agent_name: str, custom_name: str = None, model_override: 
         pass
     
     return agent
+
+
+# Agent Registry for web interface
+AGENT_REGISTRY = {
+    "one_tool_agent": {
+        "display_name": "One Tool Agent",
+        "description": "A focused agent that uses a single tool for specific tasks",
+        "tools": ["generic_linux_command"],
+        "capabilities": ["command_execution", "basic_tasks"]
+    },
+    "redteam_agent": {
+        "display_name": "Red Team Agent",
+        "description": "Offensive security specialist for penetration testing",
+        "tools": ["nmap", "metasploit", "exploit_tools", "web_tools"],
+        "capabilities": ["vulnerability_scanning", "exploitation", "privilege_escalation"]
+    },
+    "boot2root_agent": {
+        "display_name": "Boot2Root Agent",
+        "description": "Specialized agent for CTF and boot2root challenges",
+        "tools": ["reconnaissance", "exploitation", "lateral_movement", "flag_extraction"],
+        "capabilities": ["ctf_solving", "full_compromise", "automated_exploitation"]
+    }
+}

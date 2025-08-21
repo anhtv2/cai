@@ -1,0 +1,9 @@
+# CAI Web Configuration Example
+# Set these environment variables before running the web interface
+
+export CAI_MODEL="openrouter/z-ai/glm-4.5-air:free"
+export CAI_AGENT_TYPE="one_tool_agent"
+export OPENAI_API_KEY="your-api-key-here"  # Replace with your actual API key
+export CAI_STREAM=false
+export CAI_TRACING=false
+export CAI_DEBUG=1

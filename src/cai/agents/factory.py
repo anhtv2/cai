@@ -46,7 +46,12 @@ def create_generic_agent_factory(
             model_name = os.environ.get("CAI_MODEL", "alias0")
             
             
-        api_key = os.getenv("OPENAI_API_KEY", "sk-placeholder-key-for-local-models")
+        # Get API key based on model provider
+        api_key = None
+        if "openrouter" in model_name:
+            api_key = os.getenv("OPENROUTER_API_KEY", "sk-placeholder-openrouter")
+        else:
+            api_key = os.getenv("OPENAI_API_KEY", "sk-placeholder-key-for-local-models")
 
         # Create a new model instance with the original agent name
         # Custom name is only for display purposes, not for the model

@@ -644,10 +644,10 @@ async def _run_local_async(command, stdout=False, timeout=100, stream=False, cal
             output_buffer = []
             buffer_size = 0
             update_interval = 10  # lines - default for most tools
-            
-            # Use a smaller interval for generic_linux_command for better responsiveness
-            if tool_name == "generic_linux_command":
-                update_interval = 3  # Update more frequently for terminal commands
+
+            # Use a smaller interval for common interactive/long-running tools
+            if tool_name in ("generic_linux_command", "bbot", "reconftw"):
+                update_interval = 3  # Update more frequently for terminal/scan commands
                 
                 # Don't add refresh_rate to tool_args as it affects command deduplication
                 # The refresh behavior is already handled by the streaming update logic
@@ -922,7 +922,7 @@ async def _run_docker_async(command, container_id, stdout=False, timeout=100, st
             # Stream output
             output_buffer = []
             buffer_size = 0
-            update_interval = 3 if tool_name == "generic_linux_command" else 10
+            update_interval = 3 if tool_name in ("generic_linux_command", "bbot", "reconftw") else 10
             
             start_time = time.time()
             
