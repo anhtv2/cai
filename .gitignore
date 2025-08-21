@@ -165,3 +165,6 @@ pentestperf
 venv*
 
 .claude
+
+# node
+node_modules/
